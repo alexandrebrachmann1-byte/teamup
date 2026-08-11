@@ -1,15 +1,14 @@
 <?php 
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "teamup";
+function getPDO() { 
+    try{
+        $db =  new PDO('mysql:host=localhost;dbname=webimmo', "root", "");
+        return $db;
+    }
+    catch(PDOException $err){
+        var_dump($err);
+        throw $err;
 
-try {
-    $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connexion réussie !";
-}
-catch(PDOException $e){
-    echo "Erreur de connexion : " . $e->getMessage();
+    }
+    
 }
