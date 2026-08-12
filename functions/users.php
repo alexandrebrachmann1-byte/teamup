@@ -1,6 +1,31 @@
 <?php
 require_once "database.php";
 
+function register($user) {
+
+    $hash = password_hash($user["password"],PASSWORD_DEFAULT) ;
+
+    $pdo = getPDO();
+    $sql ="INSERT INTO users (username, mail, role, password) VALUES (:username, :mail, :role, :password)";
+    $pstmt = $pdo->prepare($sql);
+    $trueUser = ["username"=>$user["username"],"mail"=>$user["mail"],"role"=>"user","password"=>$hash ];
+
+    $result = $pstmt->execute($trueUser);
+
+
+    if ($pstmt->rowCount() === 1) {
+        echo "Inscription réalisé avec succès !";
+        $id = $pdo->lastInsertId();
+        $_SESSION["username"] = $trueUser["username"];
+        $_SESSION["user_id"] = $id;
+        $_SESSION["role"] = $trueUser["role"];
+        $_SESSION["mail"] = $trueUser["mail"];
+        header("Location: /teamup/pages/login.php");
+    } else {
+        echo "Ajout impossible";
+    }
+}
+
 function connection($user){
 
     $pdo = getPDO();

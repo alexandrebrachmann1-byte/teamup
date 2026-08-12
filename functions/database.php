@@ -2,7 +2,7 @@
 
 function getPDO() { 
     try{
-        $db =  new PDO('mysql:host=localhost;dbname=webimmo', "root", "");
+        $db =  new PDO('mysql:host=localhost;dbname=teamup', "root", "");
         return $db;
     }
     catch(PDOException $err){

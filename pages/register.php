@@ -12,7 +12,7 @@ session_start();
 <body>
     
 <div>  
-    <form method="POST" action="traitement_register.php">
+    <form method="POST" action="../traitements/traitement_register.php">
         <div>
             <label for="username">Nom d'utilisateur</label>
             <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" require>
