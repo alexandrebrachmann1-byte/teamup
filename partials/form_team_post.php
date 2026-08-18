@@ -2,15 +2,15 @@
 require_once "../data/champions.php";
 ?>
 
-<h4>Créez votre annonce de joueur !</h4>
+<h4>Créez votre annonce d'équipe !</h4>
 <div>
-    <form method="POST" action="../traitements/traitement_player_post.php">
+    <form method="POST" action="../traitements/traitement_team_post.php">
         <div>
-            <label for="username">Nom d'utilisateur Riot :</label>
-            <input type="text" name="username" id="username" placeholder="NomUtilisateur#euw" required>
+            <label for="name">Nom de l'équipe :</label>
+            <input type="text" name="name" id="name" placeholder="Nom d'équipe" required>
         </div>
         <div>
-            <label for="rank">Votre rang :</label>
+            <label for="rank">Rang de l'équipe :</label>
             <input type="radio" name="rank" id="iron" value="iron" required> Fer
             <input type="radio" name="rank" id="bronze" value="bronze" required> Bronze
             <input type="radio" name="rank" id="silver" value="silver" required> Argent
@@ -23,19 +23,12 @@ require_once "../data/champions.php";
             <input type="radio" name="rank" id="challenger" value="challenger" required> Challenger
         </div>
         <div>
-            <label for="role">Votre rôle :</label>
+            <label for="role">Rôle(s) recherché(s) :</label>
             <input type="checkbox" name="role[]" id="top" value="top"> Top
             <input type="checkbox" name="role[]" id="jungle" value="jungle"> Jungle
             <input type="checkbox" name="role[]" id="mid" value="mid"> Mid
             <input type="checkbox" name="role[]" id="adc" value="adc"> Adc
             <input type="checkbox" name="role[]" id="support" value="support"> Support
-        </div>
-        <div>
-            <label for="champion">Vos champions :</label>
-                <?php foreach($champions as $champion): ?>
-                    <input type="checkbox" name="champion[]" id="<?php echo "$champion"; ?>" value="<?php echo "$champion"; ?>"> 
-                        <?php echo "$champion"; ?>
-                <?php endforeach; ?>
         </div>
         <div>
             <label for="description">Description :</label>
