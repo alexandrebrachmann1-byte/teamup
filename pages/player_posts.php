@@ -4,7 +4,6 @@ require_once "../functions/database.php";
 require_once "../functions/posts.php";
 
 $playersPosts = get_all_players_posts();
-var_dump($playersPosts);
 
 foreach ($playersPosts as $playerPost) {
     ?> 
