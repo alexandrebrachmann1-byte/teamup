@@ -22,7 +22,7 @@ if(isset($_POST["ok"])){
             "discord" => $discord
         )
     ); 
-    echo "Annonce publiée !";
+    header("Location: /teamup/pages/dashboard.php");
 }
 
 
