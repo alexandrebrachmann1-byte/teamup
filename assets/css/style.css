@@ -1,0 +1,16 @@
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+li a{
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 30px;
+}
