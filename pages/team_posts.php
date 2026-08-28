@@ -2,7 +2,26 @@
 session_start();
 require_once "../functions/database.php";
 require_once "../functions/posts.php";
+?> 
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chercher une équipe</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+
+
+
+<?php 
+require_once "../partials/header.php";
 $teamsPosts = get_all_teams_posts();
 
 foreach ($teamsPosts as $teamPost) {

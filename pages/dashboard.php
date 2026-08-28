@@ -1,6 +1,5 @@
 <?php 
 session_start();
-require_once "../partials/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +13,15 @@ require_once "../partials/header.php";
 
     <?php
 
-        if($_SESSION["role"] === "user"){
-            require_once "../partials/dashboard_user.php";
-        }
-        else{
-            header("Location: /teamup/pages/login.php");
-        }
+    require_once "../partials/header.php";
+        
+
+    if($_SESSION["role"] === "user"){
+        require_once "../partials/dashboard_user.php";
+    }
+    else{
+        header("Location: /teamup/pages/login.php");
+    }
         
 
     ?>

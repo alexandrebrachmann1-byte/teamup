@@ -1,6 +1,3 @@
-<?php 
-require_once "../data/champions.php";
-?>
 
 <h4>Créez votre annonce d'équipe !</h4>
 <div>
