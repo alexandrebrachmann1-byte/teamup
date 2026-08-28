@@ -1,14 +1,23 @@
-<?php 
+<?php
 
-function getPDO() { 
-    try{
-        $db =  new PDO('mysql:host=localhost;dbname=teamup', "root", "");
-        return $db;
-    }
-    catch(PDOException $err){
-        var_dump($err);
-        throw $err;
+function getPDO() {
+    static $pdo = null;
 
+    if ($pdo === null) {
+        try {
+            $pdo = new PDO(
+                'mysql:host=localhost;dbname=teamup;charset=utf8mb4',
+                'root',
+                '',
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ]
+            );
+        } catch (PDOException $err) {
+            throw $err;
+        }
     }
-    
+
+    return $pdo;
 }
