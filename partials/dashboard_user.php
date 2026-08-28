@@ -26,7 +26,7 @@
             <p> Discord : <?php echo $playerPost["discord"]; ?> </p>
         </div>
     <?php
-}
+} 
 
     $teamPosts = get_team_post_by_user_id($_SESSION["user_id"]);
 
@@ -50,3 +50,4 @@
     <?php
 }
 ?>
+
