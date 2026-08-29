@@ -18,9 +18,10 @@
                 <li> <a href="../pages/team_posts.php">Chercher une équipe</a> </li>
 
                 <?php if (isset($_SESSION["role"])) { ?>  
-                        <button> <a href="../pages/logout.php">Se deconnecter</a> </button>
+                        <form method="POST" action="../pages/logout.php">
+                            <button type="submit" name="logout" id="logout">Se deconnecter</button>
+                        </form>
                 <?php }else{ ?>
-                        
                         <button> <a href="../pages/login.php">Se connecter</a> </button>
                         <button> <a href="../pages/register.php">S'inscrire</a> </button>
                 <?php } ?>
@@ -32,10 +33,4 @@
 </html>
 
 
-<?php
 
-if (isset($_SESSION["role"])) {
- 
-
-}
-var_dump($_SESSION);

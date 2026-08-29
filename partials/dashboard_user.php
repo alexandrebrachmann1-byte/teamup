@@ -1,3 +1,4 @@
+
 <?php
     require_once "../functions/posts.php";
     require_once "form_player_post.php";
@@ -50,4 +51,7 @@
     <?php
 }
 ?>
+
+
+
 
