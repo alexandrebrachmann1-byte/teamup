@@ -20,7 +20,7 @@ function register($user) {
         $_SESSION["user_id"] = $id;
         $_SESSION["role"] = $trueUser["role"];
         $_SESSION["mail"] = $trueUser["mail"];
-        header("Location: /teamup/pages/login.php");
+        header("Location: /teamup/pages/dashboard.php");
     } else {
         echo "Ajout impossible";
     }
@@ -37,7 +37,7 @@ function connection($user){
         $user_base = $pstmt->fetch(PDO::FETCH_ASSOC);
         $isSame = password_verify($user["password"],$user_base["password"]);
         if($isSame === true){
-            $_SESSION["name"] = $user_base["name"];
+            $_SESSION["username"] = $user_base["username"];
             $_SESSION["mail"] = $user_base["mail"];
             $_SESSION["role"] = $user_base["role"];
             $_SESSION["user_id"] = $user_base["id"];

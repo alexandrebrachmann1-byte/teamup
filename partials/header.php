@@ -18,9 +18,9 @@
                 <li> <a href="../pages/team_posts.php">Chercher une équipe</a> </li>
 
                 <?php if (isset($_SESSION["role"])) { ?>  
-                        <form method="POST" action="../pages/logout.php">
+                        <a href="../pages/logout.php">
                             <button type="submit" name="logout" id="logout">Se deconnecter</button>
-                        </form>
+                        </a>
                 <?php }else{ ?>
                         <button> <a href="../pages/login.php">Se connecter</a> </button>
                         <button> <a href="../pages/register.php">S'inscrire</a> </button>
