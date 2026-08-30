@@ -1,6 +1,5 @@
-<?php 
-session_start();
-
+<?php session_start();
+var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +20,8 @@ session_start();
         require_once "../partials/dashboard_user.php";
     }
     else{
-        header("Location: /teamup/pages/login.php");
+        //header("Location: /teamup/pages/logout.php");
+        echo "mauvais role";
     }
         
 
