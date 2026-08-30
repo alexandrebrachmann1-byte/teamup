@@ -6,7 +6,7 @@ function getPDO() {
     if ($pdo === null) {
         try {
             $pdo = new PDO(
-                'mysql:host=localhost;dbname=teamup;charset=utf8mb4',
+                'mysql:host=127.0.0.1;dbname=teamup;charset=utf8mb4',
                 'root',
                 '',
                 [
