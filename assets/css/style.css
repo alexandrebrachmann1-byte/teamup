@@ -1,16 +1,361 @@
-.navdiv{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* ==========================================================================
+   TEAMUP — FEUILLE DE STYLE PRINCIPALE
+   Thème visuel inspiré de League of Legends (Hextech gold / bleu nuit)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. BASE / FOND GÉNÉRAL DE LA PAGE
+   ========================================================================== */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+
+  /* Couleur de fond très sombre en dessous de l'image,
+     évite un flash blanc si l'image met du temps à charger */
+  background-color: #05070a;
+
+  /* Image de fond du site */
+  background-image: url("../images/background_teamup.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-li{
-    list-style: none;
-    display: inline-block;
+
+/* ==========================================================================
+   2. HEADER / NAVBAR
+   ========================================================================== */
+
+.navbar {
+  background: #0a0e14;
+  border-bottom: 2px solid #c8aa6e; /* liseré doré Hextech */
+  padding: 0 1.5rem;
 }
 
-li a{
-    font-size: 18px;
-    font-weight: bold;
-    margin-right: 40px;
+.navdiv {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo img {
+  height: 42px;
+  width: auto;
+}
+
+.navdiv ul {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Liens de navigation classiques (Accueil, Dashboard, ...) */
+.navdiv ul li a {
+  color: #f0e6d2;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+/* Petit soulignement doré animé au survol */
+.navdiv ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #c8aa6e;
+  transition: width 0.25s ease;
+}
+
+.navdiv ul li a:hover {
+  color: #c8aa6e;
+}
+
+.navdiv ul li a:hover::after {
+  width: 100%;
+}
+
+/* --- Boutons connexion / inscription / déconnexion --- */
+
+.btn-nav {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #785a28;
+  border-radius: 4px;
+  color: #cdbe91;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Annule le soulignement animé hérité de .navdiv ul li a::after */
+.btn-nav::after {
+  display: none;
+}
+
+.btn-nav:hover {
+  background: rgba(200, 170, 110, 0.12);
+  border-color: #c8aa6e;
+  color: #f0e6d2;
+}
+
+/* Version pleine (dorée) pour le bouton mis en avant, ex: "S'inscrire" */
+.btn-nav-primary {
+  background: linear-gradient(180deg, #c8aa6e, #a08652);
+  border: none;
+  color: #0a1428;
+}
+
+.btn-nav-primary:hover {
+  background: linear-gradient(180deg, #f0e6d2, #c8aa6e);
+  color: #0a1428;
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.4);
+}
+
+/* Bouton de déconnexion, teinte rouge discrète */
+#logout {
+  border-color: #5c3a3a;
+  color: #d8a3a3;
+}
+
+#logout:hover {
+  background: rgba(216, 90, 90, 0.1);
+  border-color: #d85a5a;
+  color: #f0d0d0;
+}
+
+
+/* ==========================================================================
+   3. FORMULAIRES (annonce joueur / annonce équipe)
+   ========================================================================== */
+
+.form-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #0a1428;
+  border: 1px solid #1e2328;
+  border-radius: 8px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #c8aa6e;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #f0e6d2;
+}
+
+/* --- Champs texte / textarea --- */
+
+.form-input,
+.form-textarea {
+  padding: 0.7rem 1rem;
+  background: #1e2328;
+  border: 1px solid #3c3c41;
+  border-radius: 4px;
+  color: #f0e6d2;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #7a7a7a;
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #c8aa6e;
+  box-shadow: 0 0 0 3px rgba(200, 170, 110, 0.2);
+}
+
+/* --- Groupe de radios (rang) --- */
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  background: #1e2328;
+  border: 1px solid #3c3c41;
+  border-radius: 20px;
+  color: #cdbe91;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.radio-option:hover {
+  background: #26323d;
+  border-color: #5b5a56;
+}
+
+/* Option sélectionnée : mise en avant en doré */
+.radio-option:has(input:checked) {
+  background: rgba(200, 170, 110, 0.15);
+  border-color: #c8aa6e;
+  color: #f0e6d2;
+}
+
+/* --- Groupe de checkboxes (rôles) --- */
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  background: #1e2328;
+  border: 1px solid #3c3c41;
+  border-radius: 4px;
+  color: #cdbe91;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.checkbox-option:hover {
+  background: #26323d;
+  border-color: #5b5a56;
+}
+
+.checkbox-option:has(input:checked) {
+  background: rgba(200, 170, 110, 0.15);
+  border-color: #c8aa6e;
+  color: #f0e6d2;
+}
+
+/* --- Grille de champions (liste longue, zone scrollable) --- */
+
+.champion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.75rem;
+  background: #01050d;
+  border: 1px solid #3c3c41;
+  border-radius: 4px;
+}
+
+.champion-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #a09b8c;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.champion-option:hover {
+  color: #f0e6d2;
+}
+
+.champion-option:has(input:checked) {
+  color: #c8aa6e;
+}
+
+/* Scrollbar personnalisée de la grille de champions (Chrome/Edge/Safari) */
+.champion-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.champion-grid::-webkit-scrollbar-track {
+  background: #0a1428;
+}
+
+.champion-grid::-webkit-scrollbar-thumb {
+  background: #3c3c41;
+  border-radius: 4px;
+}
+
+.champion-grid::-webkit-scrollbar-thumb:hover {
+  background: #5b5a56;
+}
+
+
+/* ==========================================================================
+   4. BOUTONS GÉNÉRIQUES (ex: bouton "Envoyer" des formulaires)
+   ========================================================================== */
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #c8aa6e, #a08652);
+  color: #0a1428;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, #f0e6d2, #c8aa6e);
+  box-shadow: 0 0 12px rgba(200, 170, 110, 0.4);
 }

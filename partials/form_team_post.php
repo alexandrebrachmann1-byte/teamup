@@ -1,44 +1,54 @@
+<h4 class="form-title">Créez votre annonce d'équipe !</h4>
+<div class="form-wrapper">
+    <form method="POST" action="../traitements/traitement_team_post.php" class="form">
 
-<h4>Créez votre annonce d'équipe !</h4>
-<div>
-    <form method="POST" action="../traitements/traitement_team_post.php">
-        <div>
-            <label for="name">Nom de l'équipe :</label>
-            <input type="text" name="name" id="name" placeholder="Nom d'équipe" required>
+        <div class="form-group">
+            <label for="team-name" class="form-label">Nom de l'équipe :</label>
+            <input type="text" name="name" id="team-name" class="form-input" placeholder="Nom d'équipe" required>
         </div>
-        <div>
-            <label for="rank">Rang de l'équipe :</label>
-            <input type="radio" name="rank" id="iron" value="iron" required> Fer
-            <input type="radio" name="rank" id="bronze" value="bronze" required> Bronze
-            <input type="radio" name="rank" id="silver" value="silver" required> Argent
-            <input type="radio" name="rank" id="gold" value="gold" required> Or
-            <input type="radio" name="rank" id="platinum" value="platinum" required> Platine
-            <input type="radio" name="rank" id="emerald" value="emerald" required> Emeraude
-            <input type="radio" name="rank" id="diamond" value="diamond" required> Diamant
-            <input type="radio" name="rank" id="master" value="master" required> Master
-            <input type="radio" name="rank" id="grandmaster" value="grandmaster" required> Grandmaster
-            <input type="radio" name="rank" id="challenger" value="challenger" required> Challenger
+
+        <div class="form-group">
+            <label class="form-label">Rang de l'équipe :</label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="rank" id="team-iron" value="iron" required> Fer</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-bronze" value="bronze" required> Bronze</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-silver" value="silver" required> Argent</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-gold" value="gold" required> Or</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-platinum" value="platinum" required> Platine</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-emerald" value="emerald" required> Emeraude</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-diamond" value="diamond" required> Diamant</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-master" value="master" required> Master</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-grandmaster" value="grandmaster" required> Grandmaster</label>
+                <label class="radio-option"><input type="radio" name="rank" id="team-challenger" value="challenger" required> Challenger</label>
+            </div>
         </div>
-        <div>
-            <label for="role">Rôle(s) recherché(s) :</label>
-            <input type="checkbox" name="role[]" id="top" value="top"> Top
-            <input type="checkbox" name="role[]" id="jungle" value="jungle"> Jungle
-            <input type="checkbox" name="role[]" id="mid" value="mid"> Mid
-            <input type="checkbox" name="role[]" id="adc" value="adc"> Adc
-            <input type="checkbox" name="role[]" id="support" value="support"> Support
+
+        <div class="form-group">
+            <label class="form-label">Rôle(s) recherché(s) :</label>
+            <div class="checkbox-group">
+                <label class="checkbox-option"><input type="checkbox" name="role[]" id="team-top" value="top"> Top</label>
+                <label class="checkbox-option"><input type="checkbox" name="role[]" id="team-jungle" value="jungle"> Jungle</label>
+                <label class="checkbox-option"><input type="checkbox" name="role[]" id="team-mid" value="mid"> Mid</label>
+                <label class="checkbox-option"><input type="checkbox" name="role[]" id="team-adc" value="adc"> Adc</label>
+                <label class="checkbox-option"><input type="checkbox" name="role[]" id="team-support" value="support"> Support</label>
+            </div>
         </div>
-        <div>
-            <label for="description">Description :</label>
-            <textarea name="description" id="description" placeholder="Décrivez-vous..." required></textarea>
+
+        <div class="form-group">
+            <label for="team-description" class="form-label">Description :</label>
+            <textarea name="description" id="team-description" class="form-textarea" placeholder="Décrivez votre équipe..." required></textarea>
         </div>
-        <div>
-            <label for="discord">Votre Discord :</label>
-            <input type="text" name="discord" id="discord" placeholder="discord123" required>
+
+        <div class="form-group">
+            <label for="team-discord" class="form-label">Votre Discord :</label>
+            <input type="text" name="discord" id="team-discord" class="form-input" placeholder="discord123" required>
         </div>
-        <div>
-            <button type="submit" name="ok">
+
+        <div class="form-group">
+            <button type="submit" name="ok" class="btn btn-primary">
                 Envoyer
             </button>
         </div>
+
     </form>
 </div>

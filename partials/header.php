@@ -7,23 +7,29 @@
     <link rel="stylesheet" href="/teamup/assets/css/style.css">
 </head>
 <body>
-   
+
     <nav class="navbar">
         <div class="navdiv">
-            <div class="logo"> <img src="../assets/images/logo_teamup.png" alt="teamup"></div>
+            <div class="logo">
+                <img src="../assets/images/logo_teamup.png" alt="teamup">
+            </div>
             <ul>
-                <li> <a href="../index.php">Acceuil</a> </li>
-                <li> <a href="../pages/dashboard.php">Dashboard</a> </li>
-                <li> <a href="../pages/player_posts.php">Chercher un joueur</a> </li>
-                <li> <a href="../pages/team_posts.php">Chercher une équipe</a> </li>
+                <li><a href="/teamup/index.php">Acceuil</a></li>
+                <li><a href="/teamup/pages/dashboard.php">Dashboard</a></li>
+                <li><a href="/teamup/pages/player_posts.php">Chercher un joueur</a></li>
+                <li><a href="/teamup/pages/team_posts.php">Chercher une équipe</a></li>
 
-                <?php if (isset($_SESSION["role"])) { ?>  
-                        <a href="../pages/logout.php">
-                            <button type="submit" name="logout" id="logout">Se deconnecter</button>
-                        </a>
-                <?php }else{ ?>
-                        <button> <a href="../pages/login.php">Se connecter</a> </button>
-                        <button> <a href="../pages/register.php">S'inscrire</a> </button>
+                <?php if (isset($_SESSION["role"])) { ?>
+                    <li>
+                        <a href="/teamup/pages/logout.php" id="logout" class="btn-nav">Se deconnecter</a>
+                    </li>
+                <?php } else { ?>
+                    <li>
+                        <a href="/teamup/pages/login.php" class="btn-nav">Se connecter</a>
+                    </li>
+                    <li>
+                        <a href="/teamup/pages/register.php" class="btn-nav btn-nav-primary">S'inscrire</a>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
@@ -31,6 +37,3 @@
 
 </body>
 </html>
-
-
-
