@@ -1,56 +1,62 @@
-
 <?php
     require_once "../functions/posts.php";
     require_once "form_player_post.php";
     require_once "form_team_post.php";
 
     $playerPosts = get_player_post_by_user_id($_SESSION["user_id"]);
-    
-    foreach ($playerPosts as $playerPost) {
-    ?> 
-        <div>
-            <h4> <?php echo $playerPost["riot_username"]; ?> </h4>
-        </div>
-        <div>
-            <p> <?php echo $playerPost["role"]; ?> </p>
-        </div>
-        <div>
-            <p> <?php echo $playerPost["rank"]; ?> </p>
-        </div>
-        <div>
-            <p> <?php echo $playerPost["champion"]; ?> </p>
-        </div>
-        <div>
-            <p> <?php echo $playerPost["description"]; ?> </p>
-        </div>
-        <div>
-            <p> Discord : <?php echo $playerPost["discord"]; ?> </p>
-        </div>
-    <?php
-} 
+?>
 
+<div class="posts-grid">
+    <?php foreach ($playerPosts as $playerPost) { ?>
+        <div class="post-card">
+            <h4 class="post-card-title"><?php echo $playerPost["riot_username"]; ?></h4>
+
+            <div class="post-card-row">
+                <span class="post-card-label">Rôle</span>
+                <span class="post-card-value"><?php echo $playerPost["role"]; ?></span>
+            </div>
+            <div class="post-card-row">
+                <span class="post-card-label">Rang</span>
+                <span class="post-card-value post-card-rank"><?php echo $playerPost["rank"]; ?></span>
+            </div>
+            <div class="post-card-row">
+                <span class="post-card-label">Champions</span>
+                <span class="post-card-value"><?php echo $playerPost["champion"]; ?></span>
+            </div>
+
+            <p class="post-card-description"><?php echo $playerPost["description"]; ?></p>
+
+            <div class="post-card-footer">
+                Discord : <span class="post-card-discord"><?php echo $playerPost["discord"]; ?></span>
+            </div>
+        </div>
+    <?php } ?>
+</div>
+
+<?php
     $teamPosts = get_team_post_by_user_id($_SESSION["user_id"]);
+?>
 
-    foreach ($teamPosts as $teamPost) {
-    ?> 
-        <div>
-            <h4> <?php echo $teamPost["name"]; ?> </h4>
-        </div>
-        <div>
-            <p> <?php echo $teamPost["rank"]; ?> </p>
-        </div>
-        <div>
-            <p> Rôle(s) recherché(s) : <?php echo $teamPost["role"]; ?> </p>
-        </div>
-        <div>
-            <p> <?php echo $teamPost["description"]; ?> </p>
-        </div>
-        <div>
-            <p> Discord : <?php echo $teamPost["discord"]; ?> </p>
-        </div>
-    <?php
-}
+<div class="posts-grid">
+    <?php foreach ($teamPosts as $teamPost) { ?>
+        <div class="post-card">
+            <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
 
+            <div class="post-card-row">
+                <span class="post-card-label">Rang</span>
+                <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
+            </div>
+            <div class="post-card-row">
+                <span class="post-card-label">Rôle(s) recherché(s)</span>
+                <span class="post-card-value"><?php echo $teamPost["role"]; ?></span>
+            </div>
 
+            <p class="post-card-description"><?php echo $teamPost["description"]; ?></p>
 
+            <div class="post-card-footer">
+                Discord : <span class="post-card-discord"><?php echo $teamPost["discord"]; ?></span>
+            </div>
+        </div>
+    <?php } ?>
+</div>
 

@@ -1,6 +1,4 @@
-<?php session_start();
-
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,15 +10,55 @@
 </head>
 <body>
     <?php
+    if (isset($_SESSION["role"]) && $_SESSION["role"] !== "") {
         require_once "../partials/header.php";
-            
-        if($_SESSION["role"] === "user"){
+    ?>
+    <div class="page-content">
+        <?php
+        if ($_SESSION["role"] === "user") {
             require_once "../partials/dashboard_user.php";
-        }
-        else{
-            //header("Location: /teamup/pages/logout.php");
+        } else {
             echo "mauvais role";
         }
+        ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <?php
+    } else {
+        header("Location: /teamup/pages/login.php");
+    }
     ?>
 </body>
 </html>

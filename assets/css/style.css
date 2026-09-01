@@ -12,16 +12,23 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
 
-  /* Couleur de fond très sombre en dessous de l'image,
-     évite un flash blanc si l'image met du temps à charger */
+  /* Couleur de fond de secours (évite un flash blanc si l'image met du
+     temps à charger). L'image elle-même est posée sur .page-content
+     ci-dessous, pour ne pas passer derrière le header. */
   background-color: #05070a;
+}
 
-  /* Image de fond du site */
+/* Conteneur englobant tout le contenu de la page, EN DESSOUS du header.
+   C'est ici (et non sur body) que l'image de fond est appliquée, pour
+   qu'elle démarre sous la navbar et ne soit jamais masquée par elle. */
+.page-content {
   background-image: url("../images/background_teamup.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; /* l'image reste fixe, ne bouge pas au scroll */
+  min-height: calc(100vh - 70px); /* 70px = hauteur de la navbar */
+  padding-top: 2rem; /* empêche la marge du h4 de "fuiter" au-dessus, et espace visuellement */
 }
 
 
@@ -149,6 +156,7 @@ body {
    ========================================================================== */
 
 .form-wrapper {
+  width: 100%;
   max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
@@ -358,4 +366,117 @@ body {
 .btn-primary:hover {
   background: linear-gradient(180deg, #f0e6d2, #c8aa6e);
   box-shadow: 0 0 12px rgba(200, 170, 110, 0.4);
+}
+
+
+/* ==========================================================================
+   5. PAGES D'AUTHENTIFICATION (login / register)
+   ========================================================================== */
+
+.auth-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 70px); /* 70px = hauteur de la navbar */
+  padding: 2rem 1rem;
+  padding-top: 8vh; /* pousse le formulaire un peu plus bas à l'écran */
+}
+
+
+/* ==========================================================================
+   6. CARTES D'ANNONCES (recherche joueur / recherche équipe / dashboard)
+   ========================================================================== */
+
+/* Grille qui contient toutes les cartes d'une même liste d'annonces */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 2.5rem auto; /* espace au-dessus ET en dessous de la grille */
+  padding: 0 1.5rem;
+}
+
+/* Une carte individuelle représentant une annonce */
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: #0a1428;
+  border: 1px solid #1e2328;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Léger effet de survol pour rendre la grille interactive */
+.post-card:hover {
+  border-color: #c8aa6e;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Pseudo Riot / Nom de l'équipe, mis en avant en doré */
+.post-card-title {
+  margin: 0 0 0.4rem 0;
+  color: #c8aa6e;
+  font-size: 1.15rem;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #1e2328;
+  padding-bottom: 0.6rem;
+}
+
+/* Ligne "label : valeur" (rôle, rang, champions...) */
+.post-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* garde le label aligné en haut si la valeur passe sur plusieurs lignes */
+  flex-wrap: wrap;         /* autorise le retour à la ligne si le contenu est trop long */
+  gap: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.post-card-label {
+  color: #7a7a7a;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.post-card-value {
+  color: #f0e6d2;
+  text-align: right;
+  flex: 1;               /* utilise l'espace restant sur la ligne */
+  min-width: 0;           /* nécessaire pour que flex + word-break fonctionnent ensemble */
+  word-break: break-word; /* coupe les mots trop longs (ex: longues listes de champions) */
+}
+
+/* Mise en avant particulière pour le rang (badge doré) */
+.post-card-rank {
+  color: #c8aa6e;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Description libre de l'annonce */
+.post-card-description {
+  color: #cdbe91;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.4rem 0;
+}
+
+/* Bas de carte avec le pseudo Discord, séparé visuellement */
+.post-card-footer {
+  margin-top: 0.4rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #1e2328;
+  font-size: 0.85rem;
+  color: #a09b8c;
+}
+
+.post-card-discord {
+  color: #f0e6d2;
+  font-weight: 600;
 }
