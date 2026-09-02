@@ -8,29 +8,29 @@
 
 <div class="posts-grid">
     <?php foreach ($playerPosts as $playerPost) { ?>
-        <div class="post-card">
-            <h4 class="post-card-title"><?php echo $playerPost["riot_username"]; ?></h4>
+                <a href="../pages/player_post_details.php?id=<?php echo $playerPost["id"]; ?>" class="post-card">
+                    <h4 class="post-card-title"><?php echo $playerPost["riot_username"]; ?></h4>
 
-            <div class="post-card-row">
-                <span class="post-card-label">Rôle</span>
-                <span class="post-card-value"><?php echo $playerPost["role"]; ?></span>
-            </div>
-            <div class="post-card-row">
-                <span class="post-card-label">Rang</span>
-                <span class="post-card-value post-card-rank"><?php echo $playerPost["rank"]; ?></span>
-            </div>
-            <div class="post-card-row">
-                <span class="post-card-label">Champions</span>
-                <span class="post-card-value"><?php echo $playerPost["champion"]; ?></span>
-            </div>
+                    <div class="post-card-row">
+                        <span class="post-card-label">Rôle</span>
+                        <span class="post-card-value"><?php echo $playerPost["role"]; ?></span>
+                    </div>
+                    <div class="post-card-row">
+                        <span class="post-card-label">Rang</span>
+                        <span class="post-card-value post-card-rank"><?php echo $playerPost["rank"]; ?></span>
+                    </div>
+                    <div class="post-card-row">
+                        <span class="post-card-label">Champions</span>
+                        <span class="post-card-value"><?php echo $playerPost["champion"]; ?></span>
+                    </div>
 
-            <p class="post-card-description"><?php echo $playerPost["description"]; ?></p>
+                    <p class="post-card-description"><?php echo $playerPost["description"]; ?></p>
 
-            <div class="post-card-footer">
-                Discord : <span class="post-card-discord"><?php echo $playerPost["discord"]; ?></span>
-            </div>
-        </div>
-    <?php } ?>
+                    <div class="post-card-footer">
+                        Discord : <span class="post-card-discord"><?php echo $playerPost["discord"]; ?></span>
+                    </div>
+                </a>
+            <?php } ?>
 </div>
 
 <?php
