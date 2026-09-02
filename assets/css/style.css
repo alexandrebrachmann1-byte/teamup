@@ -397,7 +397,9 @@ body {
   padding: 0 1.5rem;
 }
 
-/* Une carte individuelle représentant une annonce */
+/* Une carte individuelle représentant une annonce.
+   C'est une balise <a>, donc on réinitialise les styles de lien par défaut
+   pour qu'elle garde l'apparence d'une carte, pas d'un lien texte. */
 .post-card {
   display: flex;
   flex-direction: column;
@@ -406,6 +408,9 @@ body {
   border: 1px solid #1e2328;
   border-radius: 8px;
   padding: 1.5rem;
+  text-decoration: none;   /* enlève le soulignement par défaut des liens */
+  color: inherit;          /* empêche le violet/bleu par défaut des liens visités */
+  cursor: pointer;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 

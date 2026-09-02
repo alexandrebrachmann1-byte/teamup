@@ -19,12 +19,12 @@ require_once "../functions/posts.php";
         <h4 class="form-title">Chercher un joueur</h4>
 
         <div class="posts-grid">
-            <?php
+            <?php 
+            
             $playersPosts = get_all_players_posts();
 
-            foreach ($playersPosts as $playerPost) {
-            ?>
-                <div class="post-card">
+            foreach ($playersPosts as $playerPost) { ?>
+                <a href="player_post_details.php?id=<?php echo $playerPost["id"]; ?>" class="post-card">
                     <h4 class="post-card-title"><?php echo $playerPost["riot_username"]; ?></h4>
 
                     <div class="post-card-row">
@@ -45,10 +45,8 @@ require_once "../functions/posts.php";
                     <div class="post-card-footer">
                         Discord : <span class="post-card-discord"><?php echo $playerPost["discord"]; ?></span>
                     </div>
-                </div>
-            <?php
-            }
-            ?>
+                </a>
+            <?php } ?>
         </div>
     </div>
 </body>
