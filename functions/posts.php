@@ -43,3 +43,15 @@ function get_team_post_by_user_id($user_id) {
    
   return $teamPost;
 }
+
+function get_player_post_by_id($id) {
+    $pdo = getPDO();  
+    $sql = "SELECT p.id, p.user_id, p.riot_username, p.rank, p.role, p.champion, p.discord, p.description, p.created_at FROM player_posts as p WHERE p.id = :id";
+    $pstmt = $pdo->prepare($sql);
+    $pstmt->execute(["id" => $id]);
+    
+  $playerPost = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+
+   
+  return $playerPost;
+}
