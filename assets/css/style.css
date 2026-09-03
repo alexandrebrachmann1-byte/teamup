@@ -398,8 +398,9 @@ body {
 }
 
 /* Une carte individuelle représentant une annonce.
-   C'est une balise <a>, donc on réinitialise les styles de lien par défaut
-   pour qu'elle garde l'apparence d'une carte, pas d'un lien texte. */
+   C'est un <div> (et non plus un <a>) car elle peut contenir plusieurs
+   liens distincts : l'aperçu cliquable + les boutons Modifier/Supprimer.
+   On ne peut pas imbriquer un <a> dans un <a> en HTML. */
 .post-card {
   display: flex;
   flex-direction: column;
@@ -408,17 +409,23 @@ body {
   border: 1px solid #1e2328;
   border-radius: 8px;
   padding: 1.5rem;
-  text-decoration: none;   /* enlève le soulignement par défaut des liens */
-  color: inherit;          /* empêche le violet/bleu par défaut des liens visités */
-  cursor: pointer;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Léger effet de survol pour rendre la grille interactive */
 .post-card:hover {
   border-color: #c8aa6e;
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Zone cliquable qui mène au détail de l'annonce (tout sauf les actions) */
+.post-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-decoration: none; /* enlève le soulignement par défaut des liens */
+  color: inherit;        /* empêche le violet/bleu par défaut des liens visités */
+  cursor: pointer;
 }
 
 /* Pseudo Riot / Nom de l'équipe, mis en avant en doré */
@@ -484,4 +491,55 @@ body {
 .post-card-discord {
   color: #f0e6d2;
   font-weight: 600;
+}
+
+/* --- Boutons d'action (Modifier / Supprimer) --- */
+
+/* Conteneur des boutons, séparé visuellement du reste de la carte */
+.post-card-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #1e2328;
+}
+
+.btn-card {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Bouton "Modifier" : doré discret, cohérent avec les autres actions du site */
+.btn-card-edit {
+  background: transparent;
+  border: 1px solid #785a28;
+  color: #cdbe91;
+}
+
+.btn-card-edit:hover {
+  background: rgba(200, 170, 110, 0.12);
+  border-color: #c8aa6e;
+  color: #f0e6d2;
+}
+
+/* Bouton "Supprimer" : rouge discret, même logique que #logout dans le header */
+.btn-card-delete {
+  background: transparent;
+  border: 1px solid #5c3a3a;
+  color: #d8a3a3;
+}
+
+.btn-card-delete:hover {
+  background: rgba(216, 90, 90, 0.12);
+  border-color: #d85a5a;
+  color: #f0d0d0;
 }
