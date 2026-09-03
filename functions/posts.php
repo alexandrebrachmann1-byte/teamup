@@ -55,3 +55,11 @@ function get_player_post_by_id($id) {
    
   return $playerPost;
 }
+
+function delete_player_post($id) {
+    $pdo = getPDO();  
+    $sql = "DELETE FROM player_posts WHERE id = :id";
+    $pstmt = $pdo->prepare($sql);
+    $pstmt->execute(["id" => $id]);
+    
+}

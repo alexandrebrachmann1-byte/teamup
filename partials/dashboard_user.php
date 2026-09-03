@@ -35,7 +35,7 @@
             <?php if ($playerPost["user_id"] === $_SESSION["user_id"]) { ?>
                 <div class="post-card-actions">
                     <a href="../pages/player_post_edit.php?id=<?php echo $playerPost["id"]; ?>" class="btn-card btn-card-edit">Modifier</a>
-                    <a href="../traitements/player_post_delete.php?id=<?php echo $playerPost["id"]; ?>" class="btn-card btn-card-delete">Supprimer</a>
+                    <a href="../traitements/traitement_player_post_delete.php?id=<?php echo $playerPost["id"]; ?>" class="btn-card btn-card-delete">Supprimer</a>
                 </div>
             <?php } ?>
         </div>
