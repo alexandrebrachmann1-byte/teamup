@@ -22,25 +22,26 @@ require_once "../functions/posts.php";
             <?php
             $teamsPosts = get_all_teams_posts();
 
-            foreach ($teamsPosts as $teamPost) {
-            ?>
+            foreach ($teamsPosts as $teamPost) { ?>
                 <div class="post-card">
-                    <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
+                    <a href="team_post_details.php?id=<?php echo $teamPost["id"]; ?>" class="post-card-link">
+                        <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
 
-                    <div class="post-card-row">
-                        <span class="post-card-label">Rang</span>
-                        <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
-                    </div>
-                    <div class="post-card-row">
-                        <span class="post-card-label">Rôle(s) recherché(s)</span>
-                        <span class="post-card-value"><?php echo $teamPost["role"]; ?></span>
-                    </div>
+                        <div class="post-card-row">
+                            <span class="post-card-label">Rang</span>
+                            <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
+                        </div>
+                        <div class="post-card-row">
+                            <span class="post-card-label">Rôle(s) recherché(s)</span>
+                            <span class="post-card-value"><?php echo $teamPost["role"]; ?></span>
+                        </div>
 
-                    <p class="post-card-description"><?php echo $teamPost["description"]; ?></p>
+                        <p class="post-card-description"><?php echo $teamPost["description"]; ?></p>
 
-                    <div class="post-card-footer">
-                        Discord : <span class="post-card-discord"><?php echo $teamPost["discord"]; ?></span>
-                    </div>
+                        <div class="post-card-footer">
+                            Discord : <span class="post-card-discord"><?php echo $teamPost["discord"]; ?></span>
+                        </div>
+                    </a>
                 </div>
             <?php
             }
