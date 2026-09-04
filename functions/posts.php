@@ -56,6 +56,18 @@ function get_player_post_by_id($id) {
   return $playerPost;
 }
 
+function get_team_post_by_id($id) {
+    $pdo = getPDO();  
+    $sql = "SELECT t.id, t.user_id, t.name, t.rank, t.role, t.description, t.discord, t.created_at FROM team_posts as t WHERE t.id = :id";
+    $pstmt = $pdo->prepare($sql);
+    $pstmt->execute(["id" => $id]);
+    
+  $teamPost = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+
+   
+  return $teamPost;
+}
+
 function delete_player_post($id) {
     $pdo = getPDO();  
     $sql = "DELETE FROM player_posts WHERE id = :id";
