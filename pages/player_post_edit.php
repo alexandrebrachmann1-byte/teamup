@@ -31,7 +31,7 @@ require_once "../data/champions.php";
                 if ($playerPost["user_id"] !== $_SESSION["user_id"]) {
                     header("Location: /teamup/pages/dashboard.php");
                 }
-                var_dump($playerPost);
+
             ?>
                 <h4 class="form-title">Modifier votre annonce !</h4>
                     <div class="form-wrapper">
