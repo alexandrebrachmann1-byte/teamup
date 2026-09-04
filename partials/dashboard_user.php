@@ -67,6 +67,13 @@
                     Discord : <span class="post-card-discord"><?php echo $teamPost["discord"]; ?></span>
                 </div>
             </a>
+
+            <?php if ($teamPost["user_id"] === $_SESSION["user_id"]) { ?>
+                <div class="post-card-actions">
+                    <a href="../pages/team_post_edit.php?id=<?php echo $teamPost["id"]; ?>" class="btn-card btn-card-edit">Modifier</a>
+                    <a href="../traitements/traitement_team_post_delete.php?id=<?php echo $teamPost["id"]; ?>" class="btn-card btn-card-delete">Supprimer</a>
+                </div>
+            <?php } ?>
         </div>
     <?php } ?>
 </div>
