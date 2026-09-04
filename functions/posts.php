@@ -75,3 +75,11 @@ function delete_player_post($id) {
     $pstmt->execute(["id" => $id]);
     
 }
+
+function delete_team_post($id) {
+    $pdo = getPDO();  
+    $sql = "DELETE FROM team_posts WHERE id = :id";
+    $pstmt = $pdo->prepare($sql);
+    $pstmt->execute(["id" => $id]);
+    
+}
