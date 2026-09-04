@@ -35,7 +35,7 @@ require_once "../data/champions.php";
             ?>
                 <h4 class="form-title">Modifier votre annonce !</h4>
                     <div class="form-wrapper">
-                        <form method="POST" action="../traitements/traitement_edit_player_post.php" class="form">
+                        <form method="POST" action="../traitements/traitement_player_post_edit.php?id=<?php echo $playerPost["id"]; ?>" class="form">
                             
                             <div class="form-group">
                                 <label for="username" class="form-label">Nom d'utilisateur Riot :</label>
