@@ -28,17 +28,49 @@ require_once "functions/stats.php";
             </div>
         </section>
 
-        <?php 
+        <?php
         $nbr_player_posts = total_number_of_player_post();
-
         $nbr_team_posts = total_number_of_team_post();
-
-        $latest_player_post = get_latest_player_posts($limit = 5);
-        //var_dump($latest_player_post);
-
-        $latest_team_post = get_latest_team_posts($limit = 5);
-        var_dump($latest_team_post);
+        $latest_player_post = get_latest_player_posts(5);
+        $latest_team_post = get_latest_team_posts(5);
         ?>
+
+        <section class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number"><?php echo $nbr_player_posts; ?></span>
+                <span class="stat-label">Annonces joueurs</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number"><?php echo $nbr_team_posts; ?></span>
+                <span class="stat-label">Annonces équipes</span>
+            </div>
+        </section>
+
+        <section class="latest-section">
+            <h2 class="latest-title">Dernieres annonces de joueurs</h2>
+            <div class="mini-grid">
+                <?php foreach ($latest_player_post as $p) { ?>
+                    <a href="/teamup/pages/player_post_details.php?id=<?php echo $p["id"]; ?>" class="mini-card">
+                        <span class="mini-card-name"><?php echo $p["riot_username"]; ?></span>
+                        <span class="mini-card-rank"><?php echo $p["rank"]; ?></span>
+                    </a>
+                <?php } ?>
+            </div>
+            <a href="/teamup/pages/player_posts.php" class="latest-more">Voir toutes les annonces joueurs →</a>
+        </section>
+
+        <section class="latest-section">
+            <h2 class="latest-title">Dernières annonces d'équipes</h2>
+            <div class="mini-grid">
+                <?php foreach ($latest_team_post as $t) { ?>
+                    <a href="/teamup/pages/team_post_details.php?id=<?php echo $t["id"]; ?>" class="mini-card">
+                        <span class="mini-card-name"><?php echo $t["name"]; ?></span>
+                        <span class="mini-card-rank"><?php echo $t["rank"]; ?></span>
+                    </a>
+                <?php } ?>
+            </div>
+            <a href="/teamup/pages/team_posts.php" class="latest-more">Voir toutes les annonces équipes →</a>
+        </section>
     </div>
 </body>
 </html>
