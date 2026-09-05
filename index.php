@@ -38,11 +38,11 @@ require_once "functions/stats.php";
         <section class="stats-bar">
             <div class="stat-item">
                 <span class="stat-number"><?php echo $nbr_player_posts; ?></span>
-                <span class="stat-label">Annonces joueurs</span>
+                <span class="stat-label">Annonces de joueurs</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number"><?php echo $nbr_team_posts; ?></span>
-                <span class="stat-label">Annonces équipes</span>
+                <span class="stat-label">Annonces d'équipes</span>
             </div>
         </section>
 
@@ -52,7 +52,15 @@ require_once "functions/stats.php";
                 <?php foreach ($latest_player_post as $p) { ?>
                     <a href="/teamup/pages/player_post_details.php?id=<?php echo $p["id"]; ?>" class="mini-card">
                         <span class="mini-card-name"><?php echo $p["riot_username"]; ?></span>
-                        <span class="mini-card-rank"><?php echo $p["rank"]; ?></span>
+
+                        <div class="mini-card-row">
+                            <span class="mini-card-label">Rôle :</span>
+                            <span class="mini-card-value"><?php echo $p["role"]; ?></span>
+                        </div>
+                        <div class="mini-card-row">
+                            <span class="mini-card-label">Rang :</span>
+                            <span class="mini-card-value mini-card-rank"><?php echo $p["rank"]; ?></span>
+                        </div>
                     </a>
                 <?php } ?>
             </div>
@@ -65,7 +73,15 @@ require_once "functions/stats.php";
                 <?php foreach ($latest_team_post as $t) { ?>
                     <a href="/teamup/pages/team_post_details.php?id=<?php echo $t["id"]; ?>" class="mini-card">
                         <span class="mini-card-name"><?php echo $t["name"]; ?></span>
-                        <span class="mini-card-rank"><?php echo $t["rank"]; ?></span>
+
+                        <div class="mini-card-row">
+                            <span class="mini-card-label">Recherche :</span>
+                            <span class="mini-card-value"><?php echo $t["role"]; ?></span>
+                        </div>
+                        <div class="mini-card-row">
+                            <span class="mini-card-label">Rang :</span>
+                            <span class="mini-card-value mini-card-rank"><?php echo $t["rank"]; ?></span>
+                        </div>
                     </a>
                 <?php } ?>
             </div>
