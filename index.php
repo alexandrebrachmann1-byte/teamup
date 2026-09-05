@@ -34,7 +34,10 @@ require_once "functions/stats.php";
         $nbr_team_posts = total_number_of_team_post();
 
         $latest_player_post = get_latest_player_posts($limit = 5);
-        var_dump($latest_player_post);
+        //var_dump($latest_player_post);
+
+        $latest_team_post = get_latest_team_posts($limit = 5);
+        var_dump($latest_team_post);
         ?>
     </div>
 </body>

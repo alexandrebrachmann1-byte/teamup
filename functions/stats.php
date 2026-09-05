@@ -26,7 +26,22 @@ function get_latest_player_posts($limit = 5) {
             LIMIT :limit";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function get_latest_team_posts($limit = 5) {
+    $pdo = getPDO();
+
+    $sql = "SELECT id, user_id, name, rank, role, description, discord, created_at
+            FROM team_posts
+            ORDER BY created_at DESC
+            LIMIT :limit";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
