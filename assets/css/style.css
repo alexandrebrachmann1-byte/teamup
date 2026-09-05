@@ -29,6 +29,7 @@ body {
   background-attachment: fixed; /* l'image reste fixe, ne bouge pas au scroll */
   min-height: calc(100vh - 70px); /* 70px = hauteur de la navbar */
   padding-top: 2rem; /* empêche la marge du h4 de "fuiter" au-dessus, et espace visuellement */
+  padding-bottom: 2rem;  /* empêche la marge de .posts-grid de "fuiter" en dessous */
 }
 
 
