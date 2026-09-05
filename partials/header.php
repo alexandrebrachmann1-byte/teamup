@@ -11,7 +11,7 @@
     <nav class="navbar">
         <div class="navdiv">
             <div class="logo">
-                <img src="../assets/images/logo_teamup.png" alt="teamup">
+                <img src="/teamup/assets/images/logo_teamup.png" alt="teamup">
             </div>
             <ul>
                 <li><a href="/teamup/index.php">Acceuil</a></li>
