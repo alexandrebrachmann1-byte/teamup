@@ -29,7 +29,7 @@ body {
   background-attachment: fixed; /* l'image reste fixe, ne bouge pas au scroll */
   min-height: calc(100vh - 70px); /* 70px = hauteur de la navbar */
   padding-top: 2rem; /* empêche la marge du h4 de "fuiter" au-dessus, et espace visuellement */
-  padding-bottom: 2rem;  /* empêche la marge de .posts-grid de "fuiter" en dessous */
+  padding-bottom: 2rem; /* empêche la marge de .posts-grid de "fuiter" en dessous */
 }
 
 
@@ -543,4 +543,76 @@ body {
   background: rgba(216, 90, 90, 0.12);
   border-color: #d85a5a;
   color: #f0d0d0;
+}
+
+
+/* ==========================================================================
+   7. PAGE D'ACCUEIL (hero)
+   ========================================================================== */
+
+.hero {
+  max-width: 700px;
+  margin: 8vh auto 0 auto; /* centre horizontalement, pousse un peu vers le bas */
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.hero-title {
+  color: #c8aa6e;
+  font-size: 2.5rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0 0 1.2rem 0;
+}
+
+.hero-text {
+  color: #f0e6d2;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Boutons plus grands que .btn-nav, pensés comme des appels à l'action */
+.btn-hero {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Version pleine (dorée), pour l'action principale */
+.btn-hero-primary {
+  background: linear-gradient(180deg, #c8aa6e, #a08652);
+  color: #0a1428;
+  border: none;
+}
+
+.btn-hero-primary:hover {
+  background: linear-gradient(180deg, #f0e6d2, #c8aa6e);
+  box-shadow: 0 0 14px rgba(200, 170, 110, 0.4);
+}
+
+/* Version contour, pour l'action secondaire */
+.btn-hero-secondary {
+  background: transparent;
+  color: #cdbe91;
+  border: 1px solid #785a28;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(200, 170, 110, 0.12);
+  border-color: #c8aa6e;
+  color: #f0e6d2;
 }
