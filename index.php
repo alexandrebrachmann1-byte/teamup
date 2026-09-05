@@ -31,6 +31,9 @@ require_once "functions/stats.php";
         <?php 
         $nbr_player_posts = total_number_of_player_post();
         echo $nbr_player_posts;
+
+        $nbr_team_posts = total_number_of_team_post();
+        echo $nbr_team_posts;
         ?>
     </div>
 </body>
