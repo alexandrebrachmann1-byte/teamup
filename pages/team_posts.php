@@ -17,13 +17,48 @@ require_once "../functions/posts.php";
 
     <div class="page-content">
         <h4 class="form-title">Chercher une équipe</h4>
+            <div class="filtres-bar">
+                <input type="text" id="rechercheInputTeam" placeholder="Rechercher un nom d'équipe...">
 
-        <div class="posts-grid">
+                <select id="filtreRoleTeam">
+                    <option value="">Rôle recherché</option>
+                    <option value="Top">Top</option>
+                    <option value="Jungle">Jungle</option>
+                    <option value="Mid">Mid</option>
+                    <option value="Adc">Adc</option>
+                    <option value="Support">Support</option>
+                </select>
+
+                <select id="filtreRangTeam">
+                    <option value="">Tous les rangs</option>
+                    <option value="Fer">Fer</option>
+                    <option value="Bronze">Bronze</option>
+                    <option value="Argent">Argent</option>
+                    <option value="Or">Or</option>
+                    <option value="Platine">Platine</option>
+                    <option value="Emeraude">Emeraude</option>
+                    <option value="Diamant">Diamant</option>
+                    <option value="Master">Master</option>
+                    <option value="Grandmaster">Grandmaster</option>
+                    <option value="Challenger">Challenger</option>
+                </select>
+
+                <select id="triSelectTeam">
+                    <option value="defaut">Trier par...</option>
+                    <option value="nom-asc">Nom d'équipe (A-Z)</option>
+                    <option value="nom-desc">Nom d'équipe (Z-A)</option>
+                    <option value="rang">Rang (croissant)</option>
+                </select>
+            </div>
+        <div class="posts-grid" id="postsGrid">
             <?php
             $teamsPosts = get_all_teams_posts();
 
             foreach ($teamsPosts as $teamPost) { ?>
-                <div class="post-card">
+                <div class="post-card"
+                    data-name="<?php echo strtolower(htmlspecialchars($teamPost["name"])); ?>"
+                    data-role="<?php echo strtolower(htmlspecialchars($teamPost["role"])); ?>"
+                    data-rank="<?php echo strtolower(htmlspecialchars($teamPost["rank"])); ?>">
                     <a href="team_post_details.php?id=<?php echo $teamPost["id"]; ?>" class="post-card-link">
                         <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
 
@@ -48,5 +83,6 @@ require_once "../functions/posts.php";
             ?>
         </div>
     </div>
+    <script src="/teamup/assets/js/filter.js" defer></script>
 </body>
 </html>

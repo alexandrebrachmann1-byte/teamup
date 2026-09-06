@@ -95,6 +95,6 @@ require_once "../data/champions.php";
             <?php } ?>
         </div>
     </div>
-    <script src="/teamup/assets/js/annonces.js" defer></script>
+    <script src="/teamup/assets/js/filter.js" defer></script>
 </body>
 </html>
