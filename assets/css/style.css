@@ -748,3 +748,69 @@ body {
 .latest-more:hover {
   color: #c8aa6e;
 }
+
+
+/* ==========================================================================
+   10. BARRE DE FILTRES (recherche joueurs / équipes)
+   ========================================================================== */
+
+.filtres-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto 1rem auto;
+  padding: 0 1.5rem;
+}
+
+/* Champ de recherche texte, même style que .form-input */
+.filtres-bar input[type="text"] {
+  flex: 1 1 220px;
+  padding: 0.6rem 1rem;
+  background: #1e2328;
+  border: 1px solid #3c3c41;
+  border-radius: 4px;
+  color: #f0e6d2;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filtres-bar input[type="text"]::placeholder {
+  color: #7a7a7a;
+}
+
+/* Menus déroulants (rôle, rang, champion, tri) */
+.filtres-bar select {
+  flex: 1 1 160px;
+  padding: 0.6rem 2.2rem 0.6rem 1rem;
+  background-color: #1e2328;
+  border: 1px solid #3c3c41;
+  border-radius: 4px;
+  color: #f0e6d2;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none; /* enlève le style natif du navigateur pour la flèche */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  /* Petite flèche dorée personnalisée en fond, à la place de celle du navigateur */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23c8aa6e' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 0.7rem;
+}
+
+.filtres-bar input[type="text"]:focus,
+.filtres-bar select:focus {
+  outline: none;
+  border-color: #c8aa6e;
+  box-shadow: 0 0 0 3px rgba(200, 170, 110, 0.2);
+}
+
+/* Couleur des options dans la liste déroulante (support variable selon navigateurs) */
+.filtres-bar select option {
+  background: #1e2328;
+  color: #f0e6d2;
+}

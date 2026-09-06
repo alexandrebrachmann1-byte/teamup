@@ -28,11 +28,11 @@ require_once "../functions/posts.php";
                         <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
 
                         <div class="post-card-row">
-                            <span class="post-card-label">Rang</span>
+                            <span class="post-card-label">Rang :</span>
                             <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
                         </div>
                         <div class="post-card-row">
-                            <span class="post-card-label">Rôle(s) recherché(s)</span>
+                            <span class="post-card-label">Rôle(s) recherché(s) :</span>
                             <span class="post-card-value"><?php echo $teamPost["role"]; ?></span>
                         </div>
 
