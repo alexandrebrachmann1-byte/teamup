@@ -2,6 +2,7 @@
     require_once "../functions/posts.php";
     require_once "form_player_post.php";
     require_once "form_team_post.php";
+    require_once "../functions/role_icons.php";
 
     $playerPosts = get_player_post_by_user_id($_SESSION["user_id"]);
 ?>
@@ -14,7 +15,14 @@
 
                 <div class="post-card-row">
                     <span class="post-card-label">Rôle :</span>
-                    <span class="post-card-value"><?php echo $playerPost["role"]; ?></span>
+                    <div class="role-icons-list">
+                        <?php
+                        $rolesList = explode(",", $playerPost["role"]);
+                        foreach ($rolesList as $role) {
+                            echo get_role_icon_html(trim($role));
+                        }
+                        ?>
+                    </div>
                 </div>
                 <div class="post-card-row">
                     <span class="post-card-label">Rang :</span>
