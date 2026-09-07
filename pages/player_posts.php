@@ -4,6 +4,7 @@ require_once "../functions/database.php";
 require_once "../functions/posts.php";
 require_once "../data/champions.php";
 require_once "../functions/champion_icons.php";
+require_once "../functions/role_icons.php";
 ?> 
 
 <!DOCTYPE html>
@@ -75,7 +76,14 @@ require_once "../functions/champion_icons.php";
 
                         <div class="post-card-row">
                             <span class="post-card-label">Rôle :</span>
-                            <span class="post-card-value"><?php echo $playerPost["role"]; ?></span>
+                            <div class="role-icons-list">
+                                <?php
+                                $rolesList = explode(",", $playerPost["role"]);
+                                foreach ($rolesList as $role) {
+                                    echo get_role_icon_html(trim($role));
+                                }
+                                ?>
+                            </div>
                         </div>
                         <div class="post-card-row">
                             <span class="post-card-label">Rang :</span>

@@ -339,6 +339,56 @@ body {
   border-color: #c8aa6e;
 }
 
+
+/* ==========================================================================
+   13. ICÔNES DE RÔLE (Top / Jungle / Mid / Adc / Support)
+   ========================================================================== */
+
+.role-icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.role-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  background: #1e2328;
+  border: 1px solid #3c3c41;
+  border-radius: 50%;
+  transition: border-color 0.2s ease;
+}
+
+.role-icon:hover {
+  border-color: #c8aa6e;
+}
+
+.role-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Dans le formulaire (choix du rôle), icône à côté du texte de l'option */
+.role-icon-inline {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+}
+
+.role-icon-inline img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Scrollbar personnalisée de la grille de champions (Chrome/Edge/Safari) */
 .champion-grid::-webkit-scrollbar {
   width: 8px;
