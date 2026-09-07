@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once "../functions/posts.php"
+require_once "../functions/posts.php";
+require_once "../functions/champion_icons.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,7 +32,20 @@ require_once "../functions/posts.php"
                     </div>
                     <div class="post-card-row">
                         <span class="post-card-label">Champions :</span>
-                        <span class="post-card-value"><?php echo $playerPost["champion"]; ?></span>
+                        <div class="champion-icons-list">
+                            <?php
+                            $championsList = explode(",", $playerPost["champion"]);
+                            foreach ($championsList as $championName) {
+                                $championName = trim($championName);
+                            ?>
+                                <img 
+                                    src="<?php echo get_champion_icon_url($championName); ?>" 
+                                    alt="<?php echo htmlspecialchars($championName); ?>" 
+                                    title="<?php echo htmlspecialchars($championName); ?>" 
+                                    class="champion-icon-mini"
+                                >
+                            <?php } ?>
+                        </div>
                     </div>
 
                     <p class="post-card-description"><?php echo $playerPost["description"]; ?></p>
