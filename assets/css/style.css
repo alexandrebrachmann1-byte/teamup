@@ -814,3 +814,71 @@ body {
   background: #1e2328;
   color: #f0e6d2;
 }
+
+
+/* ==========================================================================
+   11. NOTIFICATIONS TOAST
+   ========================================================================== */
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.4rem;
+  background: #0a1428;
+  border: 1px solid #c8aa6e;
+  border-left: 4px solid #c8aa6e;
+  border-radius: 6px;
+  color: #f0e6d2;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  /* État initial : caché en dessous, invisible */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* Classe ajoutée en JS pour déclencher l'apparition */
+.toast.toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Variante pour un message d'erreur */
+.toast.toast-error {
+  border-color: #d85a5a;
+  border-left-color: #d85a5a;
+}
+
+
+/* ==========================================================================
+   12. ICÔNES DE CHAMPIONS (détail d'annonce joueur)
+   ========================================================================== */
+
+.champion-icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* aligné à droite, comme .post-card-value */
+  gap: 0.4rem;
+}
+
+.champion-icon-mini {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #3c3c41;
+  object-fit: cover;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.champion-icon-mini:hover {
+  border-color: #c8aa6e;
+  transform: scale(1.1);
+}
