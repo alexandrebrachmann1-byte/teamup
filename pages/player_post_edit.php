@@ -2,6 +2,7 @@
 session_start();
 require_once "../functions/posts.php";
 require_once "../data/champions.php";
+require_once "../functions/champion_icons.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -72,11 +73,12 @@ require_once "../data/champions.php";
                             <div class="form-group">
                                 <label class="form-label">Vos champions :</label>
                                 <div class="champion-grid">
-                                    <?php foreach($champions as $champion): ?>
-                                            <label class="champion-option">
-                                                <input type="checkbox" name="champion[]" id="<?php echo "$champion"; ?>" value="<?php echo "$champion"; ?>" <?php if(strpos($playerPost["champion"], $champion)!== false){ ?> checked <?php } ?>>
-                                                <?php echo "$champion"; ?>
-                                            </label>
+                                    <?php foreach ($champions as $champion): ?>
+                                        <label class="champion-option">
+                                            <input type="checkbox" name="champion[]" id="<?php echo $champion; ?>" value="<?php echo $champion; ?>" <?php if(strpos($playerPost["champion"], $champion)!== false){ ?> checked <?php } ?>>
+                                            <img src="<?php echo get_champion_icon_url($champion); ?>" alt="" class="champion-icon-tiny">
+                                            <?php echo $champion; ?>
+                                        </label>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
