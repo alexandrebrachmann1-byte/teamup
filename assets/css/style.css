@@ -323,6 +323,22 @@ body {
   color: #c8aa6e;
 }
 
+/* Petite icône à côté du nom, dans la liste de sélection du formulaire */
+.champion-icon-tiny {
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  border: 1px solid #3c3c41;
+  object-fit: cover;
+  flex-shrink: 0; /* empêche l'icône de se déformer si le nom est long */
+  transition: border-color 0.2s ease;
+}
+
+/* L'icône se met en valeur aussi quand le champion est coché */
+.champion-option:has(input:checked) .champion-icon-tiny {
+  border-color: #c8aa6e;
+}
+
 /* Scrollbar personnalisée de la grille de champions (Chrome/Edge/Safari) */
 .champion-grid::-webkit-scrollbar {
   width: 8px;

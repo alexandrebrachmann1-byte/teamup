@@ -1,5 +1,6 @@
 <?php 
 require_once "../data/champions.php";
+require_once "../functions/champion_icons.php";
 ?>
 
 <h4 class="form-title">Créez votre annonce de joueur !</h4>
@@ -41,10 +42,11 @@ require_once "../data/champions.php";
         <div class="form-group">
             <label class="form-label">Vos champions :</label>
             <div class="champion-grid">
-                <?php foreach($champions as $champion): ?>
+                <?php foreach ($champions as $champion): ?>
                     <label class="champion-option">
-                        <input type="checkbox" name="champion[]" id="<?php echo "$champion"; ?>" value="<?php echo "$champion"; ?>">
-                        <?php echo "$champion"; ?>
+                        <input type="checkbox" name="champion[]" id="<?php echo $champion; ?>" value="<?php echo $champion; ?>">
+                        <img src="<?php echo get_champion_icon_url($champion); ?>" alt="" class="champion-icon-tiny">
+                        <?php echo $champion; ?>
                     </label>
                 <?php endforeach; ?>
             </div>
