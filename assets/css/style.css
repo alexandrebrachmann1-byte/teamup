@@ -407,6 +407,94 @@ body {
   height: 12px;
 }
 
+
+/* ==========================================================================
+   14. MISE EN PAGE (login / register) : texte d'intro + formulaire empilés
+   ========================================================================== */
+
+.auth-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 700px; /* même largeur que .form-wrapper, pour un alignement propre */
+}
+
+/* Bloc de texte d'intro, centré au-dessus du formulaire */
+.auth-side {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.auth-side-title {
+  color: #c8aa6e;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.auth-side-text {
+  color: #cdbe91;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 480px; /* évite que le texte s'étire sur toute la largeur */
+}
+
+/* Liste en ligne, horizontale, plutôt qu'empilée verticalement */
+.auth-side-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+}
+
+.auth-side-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: #f0e6d2;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+/* Petit losange doré devant chaque point, dans l'esprit des motifs Hextech du site */
+.auth-side-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 8px;
+  height: 8px;
+  background: #c8aa6e;
+  transform: rotate(45deg);
+}
+
+/* Lien "Pas encore de compte ?" sous le formulaire */
+.auth-switch {
+  text-align: center;
+  margin: 1.2rem 0 0 0;
+  color: #a09b8c;
+  font-size: 0.85rem;
+}
+
+.auth-switch a {
+  color: #c8aa6e;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.auth-switch a:hover {
+  color: #f0e6d2;
+}
+
 /* Scrollbar personnalisée de la grille de champions (Chrome/Edge/Safari) */
 .champion-grid::-webkit-scrollbar {
   width: 8px;
