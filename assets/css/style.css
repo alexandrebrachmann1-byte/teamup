@@ -361,6 +361,8 @@ body {
   background: #1e2328;
   border: 1px solid #3c3c41;
   border-radius: 50%;
+  overflow: hidden; /* empêche l'image de déborder si elle est plus grande que le cercle */
+  flex-shrink: 0;   /* empêche le cercle de s'écraser dans une ligne flex */
   transition: border-color 0.2s ease;
 }
 
@@ -369,8 +371,10 @@ body {
 }
 
 .role-icon img {
-  width: 100%;
-  height: 100%;
+  width: 18px;   /* taille fixe, indépendante de la taille réelle du fichier image */
+  height: 18px;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -381,12 +385,26 @@ body {
   height: 18px;
   margin-right: 0.3rem;
   vertical-align: middle;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .role-icon-inline img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* Variante compacte, utilisée dans .mini-card (page d'accueil) */
+.role-icon-small {
+  width: 18px;
+  height: 18px;
+  padding: 3px;
+}
+
+.role-icon-small img {
+  width: 12px;
+  height: 12px;
 }
 
 /* Scrollbar personnalisée de la grille de champions (Chrome/Edge/Safari) */

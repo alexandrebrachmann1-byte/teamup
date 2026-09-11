@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "functions/stats.php";
+require_once "functions/role_icons.php";
 ?>
 
 <!DOCTYPE html>
@@ -54,8 +55,15 @@ require_once "functions/stats.php";
                         <span class="mini-card-name"><?php echo $p["riot_username"]; ?></span>
 
                         <div class="mini-card-row">
-                            <span class="mini-card-label">Rôle :</span>
-                            <span class="mini-card-value"><?php echo $p["role"]; ?></span>
+                            <span class="post-card-label">Rôle :</span>
+                            <div class="role-icons-list">
+                                <?php
+                                $rolesList = explode(",", $p["role"]);
+                                foreach ($rolesList as $role) {
+                                    echo get_role_icon_html(trim($role), true);
+                                }
+                                ?>
+                            </div>
                         </div>
                         <div class="mini-card-row">
                             <span class="mini-card-label">Rang :</span>
@@ -75,8 +83,15 @@ require_once "functions/stats.php";
                         <span class="mini-card-name"><?php echo $t["name"]; ?></span>
 
                         <div class="mini-card-row">
-                            <span class="mini-card-label">Recherche :</span>
-                            <span class="mini-card-value"><?php echo $t["role"]; ?></span>
+                            <span class="post-card-label">Rôle :</span>
+                            <div class="role-icons-list">
+                                <?php
+                                $rolesList = explode(",", $t["role"]);
+                                foreach ($rolesList as $role) {
+                                    echo get_role_icon_html(trim($role), true);
+                                }
+                                ?>
+                            </div>
                         </div>
                         <div class="mini-card-row">
                             <span class="mini-card-label">Rang :</span>

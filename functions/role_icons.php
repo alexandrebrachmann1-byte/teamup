@@ -1,7 +1,6 @@
 <?php
 
-
-function get_role_icon_html($role) {
+function get_role_icon_html($role, $small = false) {
     $key = strtolower(trim($role));
     $rolesValides = ["top", "jungle", "mid", "adc", "support"];
 
@@ -10,8 +9,9 @@ function get_role_icon_html($role) {
     }
 
     $label = ucfirst($key);
+    $classe = "role-icon" . ($small ? " role-icon-small" : "");
 
-    return '<span class="role-icon" title="' . htmlspecialchars($label) . '">'
+    return '<span class="' . $classe . '" title="' . htmlspecialchars($label) . '">'
          . '<img src="/teamup/assets/images/roles/' . $key . '.png" alt="' . htmlspecialchars($label) . '">'
          . '</span>';
 }

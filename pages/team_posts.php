@@ -2,6 +2,7 @@
 session_start();
 require_once "../functions/database.php";
 require_once "../functions/posts.php";
+require_once "../functions/role_icons.php";
 ?> 
 
 <!DOCTYPE html>
@@ -67,8 +68,15 @@ require_once "../functions/posts.php";
                             <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
                         </div>
                         <div class="post-card-row">
-                            <span class="post-card-label">Rôle(s) recherché(s) :</span>
-                            <span class="post-card-value"><?php echo $teamPost["role"]; ?></span>
+                            <span class="post-card-label">Rôle(s) Recherché(s) :</span>
+                            <div class="role-icons-list">
+                                <?php
+                                $rolesList = explode(",", $teamPost["role"]);
+                                foreach ($rolesList as $role) {
+                                    echo get_role_icon_html(trim($role));
+                                }
+                                ?>
+                            </div>
                         </div>
 
                         <p class="post-card-description"><?php echo $teamPost["description"]; ?></p>
