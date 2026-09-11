@@ -2,6 +2,7 @@
 session_start();
 require_once "functions/stats.php";
 require_once "functions/role_icons.php";
+require_once "functions/champion_icons.php";
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ require_once "functions/role_icons.php";
                         <span class="mini-card-name"><?php echo $p["riot_username"]; ?></span>
 
                         <div class="mini-card-row">
-                            <span class="post-card-label">Rôle :</span>
+                            <span class="mini-card-label">Rôle :</span>
                             <div class="role-icons-list">
                                 <?php
                                 $rolesList = explode(",", $p["role"]);
@@ -63,6 +64,23 @@ require_once "functions/role_icons.php";
                                     echo get_role_icon_html(trim($role), true);
                                 }
                                 ?>
+                            </div>
+                        </div>
+                        <div class="mini-card-row">
+                            <span class="mini-card-label">Champions :</span>
+                            <div class="champion-icons-list">
+                                <?php
+                                $championsList = explode(",", $p["champion"]);
+                                foreach ($championsList as $championName) {
+                                    $championName = trim($championName);
+                                ?>
+                                    <img 
+                                        src="<?php echo get_champion_icon_url($championName); ?>" 
+                                        alt="<?php echo htmlspecialchars($championName); ?>" 
+                                        title="<?php echo htmlspecialchars($championName); ?>" 
+                                        class="champion-icon-mini"
+                                    >
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="mini-card-row">
@@ -83,7 +101,7 @@ require_once "functions/role_icons.php";
                         <span class="mini-card-name"><?php echo $t["name"]; ?></span>
 
                         <div class="mini-card-row">
-                            <span class="post-card-label">Rôle :</span>
+                            <span class="mini-card-label">Rôle :</span>
                             <div class="role-icons-list">
                                 <?php
                                 $rolesList = explode(",", $t["role"]);

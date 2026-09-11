@@ -19,7 +19,7 @@ require_once "../functions/role_icons.php";
                 $playerPost = get_player_post_by_id($_GET["id"]);
                 $playerPost = $playerPost[0];
                 ?>
-            <div class="posts-grid">
+            <div class="post-detail-wrapper">
                 <div class="post-card">
                     <h4 class="post-card-title"><?php echo $playerPost["riot_username"]; ?></h4>
 

@@ -407,6 +407,79 @@ body {
   height: 12px;
 }
 
+/* Icônes de champions en version compacte, à l'intérieur d'une .mini-card */
+.mini-card .champion-icons-list {
+  justify-content: flex-end;
+  gap: 0.3rem;
+}
+
+.mini-card .champion-icon-mini {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+}
+
+
+/* ==========================================================================
+   15. PAGE DE DÉTAIL D'UNE ANNONCE (carte unique, agrandie)
+   ========================================================================== */
+
+.post-detail-wrapper {
+  max-width: 800px;
+  margin: 4vh auto 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Surcharge de la carte quand elle est seule sur la page (pas dans .posts-grid) */
+.post-detail-wrapper .post-card {
+  padding: 2.5rem;
+  gap: 1rem;
+}
+
+.post-detail-wrapper .post-card-title {
+  font-size: 1.8rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-detail-wrapper .post-card-row {
+  font-size: 1.05rem;
+}
+
+.post-detail-wrapper .post-card-label {
+  font-size: 0.85rem;
+}
+
+.post-detail-wrapper .post-card-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0.8rem 0;
+}
+
+.post-detail-wrapper .post-card-footer {
+  font-size: 0.95rem;
+}
+
+/* Icônes de rôle et de champions agrandies sur cette page */
+.post-detail-wrapper .role-icon {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+}
+
+.post-detail-wrapper .champion-icon-mini {
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+}
+
+/* La carte ne se soulève plus au survol ici : ce n'est plus un lien cliquable */
+.post-detail-wrapper .post-card:hover {
+  transform: none;
+  border-color: #1e2328;
+  box-shadow: none;
+}
+
 
 /* ==========================================================================
    14. MISE EN PAGE (login / register) : texte d'intro + formulaire empilés
