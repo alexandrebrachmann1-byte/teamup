@@ -1,8 +1,13 @@
-<?php
+<?php 
 session_start();
+require_once "../functions/database.php";
 require_once "../functions/posts.php";
 require_once "../functions/role_icons.php";
-?>
+
+$teamPost = get_team_post_by_id($_GET["id"]);
+$teamPost = $teamPost[0];
+?> 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,50 +18,36 @@ require_once "../functions/role_icons.php";
 </head>
 <body>
     <?php require_once "../partials/header.php"; ?>
-        <div class="page-content">
-                <?php 
-                $teamPost = get_team_post_by_id($_GET["id"]);
-                $teamPost = $teamPost[0];
-                ?>
-            <div class="posts-grid">
-                <div class="post-card">
-                    <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
 
-                        <div class="post-card-row">
-                            <span class="post-card-label">Rang :</span>
-                            <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
-                        </div>
-                        <div class="post-card-row">
-                            <span class="post-card-label">Rôle :</span>
-                            <div class="role-icons-list">
-                                <?php
-                                $rolesList = explode(",", $teamPost["role"]);
-                                foreach ($rolesList as $role) {
-                                    echo get_role_icon_html(trim($role));
-                                }
-                                ?>
-                            </div>
-                        </div>
+    <div class="page-content">
+        <div class="post-detail-wrapper">
+            <div class="post-card">
+                <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
 
-                        <p class="post-card-description"><?php echo $teamPost["description"]; ?></p>
+                <div class="post-card-row">
+                    <span class="post-card-label">Rang :</span>
+                    <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
+                </div>
 
-                        <div class="post-card-footer">
-                            Discord : <span class="post-card-discord"><?php echo $teamPost["discord"]; ?></span>
-                        </div>
+                <div class="post-card-row">
+                    <span class="post-card-label">Rôle(s) recherché(s) :</span>
+                    <div class="role-icons-list">
+                        <?php
+                        $rolesList = explode(",", $teamPost["role"]);
+                        foreach ($rolesList as $role) {
+                            echo get_role_icon_html(trim($role));
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <p class="post-card-description"><?php echo $teamPost["description"]; ?></p>
+
+                <div class="post-card-footer">
+                    Discord : <span class="post-card-discord"><?php echo $teamPost["discord"]; ?></span>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
+    </div>
 </body>
 </html>
