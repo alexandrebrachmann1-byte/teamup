@@ -545,6 +545,57 @@ body {
 
 
 /* ==========================================================================
+   17. PAGINATION
+   ========================================================================== */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 1200px;
+  margin: 1rem auto 0 auto;
+  padding: 0 1.5rem;
+}
+
+.pagination-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.9rem;
+  background: #1e2328;
+  border: 1px solid #3c3c41;
+  border-radius: 4px;
+  color: #cdbe91;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination-link:hover {
+  background: #26323d;
+  border-color: #c8aa6e;
+  color: #f0e6d2;
+}
+
+/* Page actuellement affichée, mise en avant en doré plein */
+.pagination-link.pagination-active {
+  background: linear-gradient(180deg, #c8aa6e, #a08652);
+  border-color: transparent;
+  color: #0a1428;
+  cursor: default;
+}
+
+.pagination-link.pagination-active:hover {
+  background: linear-gradient(180deg, #c8aa6e, #a08652);
+  color: #0a1428;
+}
+
+
+/* ==========================================================================
    14. MISE EN PAGE (login / register) : texte d'intro + formulaire empilés
    ========================================================================== */
 

@@ -3,6 +3,7 @@ session_start();
 require_once "../functions/database.php";
 require_once "../functions/posts.php";
 require_once "../functions/role_icons.php";
+require_once "../partials/team_pagination.php";
 ?> 
 
 <!DOCTYPE html>
@@ -18,48 +19,41 @@ require_once "../functions/role_icons.php";
 
     <div class="page-content">
         <h4 class="form-title">Chercher une équipe</h4>
-            <div class="filtres-bar">
-                <input type="text" id="rechercheInputTeam" placeholder="Rechercher un nom d'équipe...">
 
-                <select id="filtreRoleTeam">
-                    <option value="">Rôle recherché</option>
-                    <option value="Top">Top</option>
-                    <option value="Jungle">Jungle</option>
-                    <option value="Mid">Mid</option>
-                    <option value="Adc">Adc</option>
-                    <option value="Support">Support</option>
-                </select>
+        <form method="GET" class="filtres-bar" id="filtresForm">
+            <input type="text" name="search" id="rechercheInput" placeholder="Rechercher un nom d'équipe..." value="<?php echo htmlspecialchars($search); ?>">
 
-                <select id="filtreRangTeam">
-                    <option value="">Tous les rangs</option>
-                    <option value="Fer">Fer</option>
-                    <option value="Bronze">Bronze</option>
-                    <option value="Argent">Argent</option>
-                    <option value="Or">Or</option>
-                    <option value="Platine">Platine</option>
-                    <option value="Emeraude">Emeraude</option>
-                    <option value="Diamant">Diamant</option>
-                    <option value="Master">Master</option>
-                    <option value="Grandmaster">Grandmaster</option>
-                    <option value="Challenger">Challenger</option>
-                </select>
+            <select name="role" id="filtreRole">
+                <option value="">Rôle recherché</option>
+                <option value="top" <?php echo $role === "top" ? "selected" : ""; ?>>Top</option>
+                <option value="jungle" <?php echo $role === "jungle" ? "selected" : ""; ?>>Jungle</option>
+                <option value="mid" <?php echo $role === "mid" ? "selected" : ""; ?>>Mid</option>
+                <option value="adc" <?php echo $role === "adc" ? "selected" : ""; ?>>Adc</option>
+                <option value="support" <?php echo $role === "support" ? "selected" : ""; ?>>Support</option>
+            </select>
 
-                <select id="triSelectTeam">
-                    <option value="defaut">Trier par...</option>
-                    <option value="nom-asc">Nom d'équipe (A-Z)</option>
-                    <option value="nom-desc">Nom d'équipe (Z-A)</option>
-                    <option value="rang">Rang (croissant)</option>
-                </select>
-            </div>
+            <select name="rank" id="filtreRang">
+                <option value="">Tous les rangs</option>
+                <?php
+                $rangsDisponibles = ["iron" => "Fer", "bronze" => "Bronze", "silver" => "Argent", "gold" => "Or", "platinum" => "Platine", "emerald" => "Emeraude", "diamond" => "Diamant", "master" => "Master", "grandmaster" => "Grandmaster", "challenger" => "Challenger"];
+                foreach ($rangsDisponibles as $valeur => $label) {
+                    $selected = ($rank === $valeur) ? "selected" : "";
+                    echo "<option value=\"$valeur\" $selected>$label</option>";
+                }
+                ?>
+            </select>
+
+            <select name="sort" id="triSelect">
+                <option value="defaut" <?php echo $sort === "defaut" ? "selected" : ""; ?>>Trier par...</option>
+                <option value="nom-asc" <?php echo $sort === "nom-asc" ? "selected" : ""; ?>>Nom d'équipe (A-Z)</option>
+                <option value="nom-desc" <?php echo $sort === "nom-desc" ? "selected" : ""; ?>>Nom d'équipe (Z-A)</option>
+                <option value="rang" <?php echo $sort === "rang" ? "selected" : ""; ?>>Rang (croissant)</option>
+            </select>
+        </form>
+
         <div class="posts-grid" id="postsGrid">
-            <?php
-            $teamsPosts = get_all_teams_posts();
-
-            foreach ($teamsPosts as $teamPost) { ?>
-                <div class="post-card"
-                    data-name="<?php echo strtolower(htmlspecialchars($teamPost["name"])); ?>"
-                    data-role="<?php echo strtolower(htmlspecialchars($teamPost["role"])); ?>"
-                    data-rank="<?php echo strtolower(htmlspecialchars($teamPost["rank"])); ?>">
+            <?php foreach ($team_posts as $teamPost) { ?>
+                <div class="post-card">
                     <a href="team_post_details.php?id=<?php echo $teamPost["id"]; ?>" class="post-card-link">
                         <h4 class="post-card-title"><?php echo $teamPost["name"]; ?></h4>
 
@@ -68,12 +62,12 @@ require_once "../functions/role_icons.php";
                             <span class="post-card-value post-card-rank"><?php echo $teamPost["rank"]; ?></span>
                         </div>
                         <div class="post-card-row">
-                            <span class="post-card-label">Rôle(s) Recherché(s) :</span>
+                            <span class="post-card-label">Rôle :</span>
                             <div class="role-icons-list">
                                 <?php
                                 $rolesList = explode(",", $teamPost["role"]);
-                                foreach ($rolesList as $role) {
-                                    echo get_role_icon_html(trim($role));
+                                foreach ($rolesList as $r) {
+                                    echo get_role_icon_html(trim($r));
                                 }
                                 ?>
                             </div>
@@ -86,11 +80,38 @@ require_once "../functions/role_icons.php";
                         </div>
                     </a>
                 </div>
-            <?php
-            }
-            ?>
+            <?php } ?>
+        </div>
+
+        <div class="pagination">
+            <?php if ($page > 1) { ?>
+                <a href="?<?php echo build_team_filters_querystring(["page" => $page - 1]); ?>" class="pagination-link">&laquo; Précédent</a>
+            <?php } ?>
+
+            <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+                <a href="?<?php echo build_team_filters_querystring(["page" => $i]); ?>" class="pagination-link <?php echo ($i === $page) ? 'pagination-active' : ''; ?>">
+                    <?php echo $i; ?>
+                </a>
+            <?php } ?>
+
+            <?php if ($page < $total_pages) { ?>
+                <a href="?<?php echo build_team_filters_querystring(["page" => $page + 1]); ?>" class="pagination-link">Suivant &raquo;</a>
+            <?php } ?>
         </div>
     </div>
-    <script src="/teamup/assets/js/filter.js" defer></script>
+
+    <script>
+        document.getElementById("filtresForm").querySelectorAll("select").forEach(el => {
+            el.addEventListener("change", () => document.getElementById("filtresForm").submit());
+        });
+
+        let timeoutRecherche;
+        document.getElementById("rechercheInput").addEventListener("input", () => {
+            clearTimeout(timeoutRecherche);
+            timeoutRecherche = setTimeout(() => {
+                document.getElementById("filtresForm").submit();
+            }, 500);
+        });
+    </script>
 </body>
 </html>
