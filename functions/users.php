@@ -61,3 +61,22 @@ function get_all_users(){
     return $pstmt->fetchAll();
 }
 
+function get_user_by_id($id) {
+    $pdo = getPDO();  
+    $sql = "SELECT * FROM users WHERE id = :id";
+    $pstmt = $pdo->prepare($sql);
+    $pstmt->execute(["id" => $id]);
+    
+  $user = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+
+   
+  return $user;
+}
+
+function delete_user_by_id($id) {
+    $pdo = getPDO();  
+    $sql = "DELETE FROM users WHERE id = :id";
+    $pstmt = $pdo->prepare($sql);
+    $pstmt->execute(["id" => $id]);
+    
+}

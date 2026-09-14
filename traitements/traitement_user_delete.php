@@ -18,15 +18,11 @@ if (!isset($_GET["id"])) {
     exit;
 }
 
-$teamPost = get_team_post_by_id($_GET["id"]);
-$teamPost = $teamPost[0];
+$user = get_user_by_id($_GET["id"]);
+$user = $user[0];
 
-if ($teamPost["user_id"] !== $_SESSION["user_id"]) {
-    header("Location: /teamup/pages/dashboard.php");
-}
+delete_user_by_id($_GET["id"]);
 
-delete_team_post($_GET["id"]);
-
-header("Location: /teamup/pages/dashboard.php");
+header("Location: /teamup/pages/user_management.php");
 exit;
 ?>
