@@ -7,6 +7,18 @@
     $teamPosts = get_team_post_by_user_id($_SESSION["user_id"]);
 ?>
 
+<div class="admin-actions">
+    <a href="../pages/user_management.php" class="btn-admin-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        Gestion des utilisateurs
+    </a>
+</div>  
+
 <div class="admin-forms-row">
     <div class="admin-form-col">
         <h2 class="section-title">Annonce de joueur</h2>
@@ -18,8 +30,7 @@
         <?php require_once "form_team_post.php"; ?>
     </div>
 </div>
-
-<a href="../pages/user_management.php">Gestion des utilisateurs</a>         
+        
 
 <div class="section-divider"></div>
 

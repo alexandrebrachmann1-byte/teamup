@@ -669,6 +669,44 @@ body {
   font-size: 0.85rem;
 }
 
+/* Zone d'actions rapides admin (ex: lien vers la gestion des utilisateurs) */
+.admin-actions {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.btn-admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.8rem;
+  background: transparent;
+  border: 1px solid #785a28;
+  border-radius: 6px;
+  color: #cdbe91;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-admin-link:hover {
+  background: rgba(200, 170, 110, 0.12);
+  border-color: #c8aa6e;
+  color: #f0e6d2;
+}
+
+.btn-admin-link svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
 
 /* ==========================================================================
    19. TABLEAU DE GESTION (utilisateurs, modération)
