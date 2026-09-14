@@ -671,6 +671,88 @@ body {
 
 
 /* ==========================================================================
+   19. TABLEAU DE GESTION (utilisateurs, modération)
+   ========================================================================== */
+
+.admin-table-wrapper {
+  max-width: 1000px;
+  margin: 2rem auto 0 auto;
+  padding: 0 1.5rem;
+  overflow-x: auto; /* permet de scroller horizontalement sur mobile plutôt que casser la mise en page */
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #0a1428;
+  border: 1px solid #1e2328;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #1e2328;
+}
+
+.admin-table th {
+  background: #1e2328;
+  color: #c8aa6e;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.admin-table td {
+  color: #f0e6d2;
+}
+
+.admin-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(200, 170, 110, 0.06);
+}
+
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Petit badge pour le rôle (user / admin) */
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.role-badge-user {
+  background: rgba(200, 170, 110, 0.12);
+  color: #cdbe91;
+  border: 1px solid #785a28;
+}
+
+.role-badge-admin {
+  background: rgba(200, 170, 110, 0.2);
+  color: #f0e6d2;
+  border: 1px solid #c8aa6e;
+}
+
+/* Le bouton Supprimer dans une cellule de tableau ne doit pas s'étirer (contrairement à .btn-card sur les post-card) */
+.admin-table .btn-card {
+  flex: none;
+  display: inline-block;
+}
+
+
+/* ==========================================================================
    14. MISE EN PAGE (login / register) : texte d'intro + formulaire empilés
    ========================================================================== */
 
