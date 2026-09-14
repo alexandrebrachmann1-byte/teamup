@@ -51,3 +51,13 @@ function connection($user){
     }
 
 }
+
+function get_all_users(){
+    $pdo = getPDO();
+    $pstmt = $pdo->prepare("SELECT * FROM users WHERE role = :role ");
+    $pstmt->bindValue(":role", "user");
+    $pstmt->execute();
+
+    return $pstmt->fetchAll();
+}
+

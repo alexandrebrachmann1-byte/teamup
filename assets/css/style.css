@@ -3,6 +3,15 @@
    Thème visuel inspiré de League of Legends (Hextech gold / bleu nuit)
    ========================================================================== */
 
+/* Reset global : le padding et la bordure sont inclus dans la largeur/hauteur
+   déclarées, au lieu de s'y ajouter. Évite les débordements inattendus
+   (ex: un .form-wrapper à width:100% + padding qui dépasse sa colonne). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 
 /* ==========================================================================
    1. BASE / FOND GÉNÉRAL DE LA PAGE
@@ -592,6 +601,72 @@ body {
 .pagination-link.pagination-active:hover {
   background: linear-gradient(180deg, #c8aa6e, #a08652);
   color: #0a1428;
+}
+
+
+/* ==========================================================================
+   18. DASHBOARD ADMIN : formulaires compacts côte à côte
+   ========================================================================== */
+
+.admin-forms-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  column-gap: 2.5rem;
+  row-gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1.5rem;
+  align-items: start; /* les deux colonnes ne s'étirent pas à la hauteur de la plus grande */
+}
+
+.admin-form-col .section-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Surcharge de .form-wrapper pour qu'il tienne dans une colonne étroite */
+.admin-form-col .form-wrapper {
+  max-width: 100%;
+  padding: 1.25rem;
+}
+
+.admin-form-col .form-title {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.admin-form-col .form {
+  gap: 0.9rem;
+}
+
+.admin-form-col .form-label {
+  font-size: 0.85rem;
+}
+
+.admin-form-col .form-input,
+.admin-form-col .form-textarea {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.admin-form-col .form-textarea {
+  min-height: 70px;
+}
+
+.admin-form-col .radio-option,
+.admin-form-col .checkbox-option {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+/* Grille de champions réduite en hauteur pour ne pas prendre toute la colonne */
+.admin-form-col .champion-grid {
+  max-height: 160px;
+}
+
+.admin-form-col .btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
 }
 
 

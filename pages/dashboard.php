@@ -17,8 +17,10 @@
         <?php
         if ($_SESSION["role"] === "user") {
             require_once "../partials/dashboard_user.php";
+        } else if ($_SESSION["role"] === "admin") {
+            require_once "../partials/dashboard_admin.php";
         } else {
-            echo "mauvais role";
+            echo "Mauvais role";
         }
         ?>
 
