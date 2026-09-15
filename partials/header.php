@@ -12,6 +12,7 @@
         <div class="navdiv">
             <div class="logo">
                 <img src="/teamup/assets/images/logo_teamup.png" alt="teamup">
+                <span class="logo-text">TeamUp</span>
             </div>
             <ul>
                 <li><a href="/teamup/index.php">Acceuil</a></li>
